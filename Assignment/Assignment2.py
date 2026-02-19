@@ -247,3 +247,41 @@ print(x(5))
 a = [1,2,3,4,5,6]
 b= map(lambda x : x+10 , a)
 print(list(b))
+
+
+# 16. Use lambda to sort a list of dictionaries by a key (like "age").
+
+d = {'b': 2, 'a': 5, 'c': 1}
+
+l = lambda x : sorted(x.items())
+
+print(dict(l(d)))
+
+# 17. Write a lambda that returns True if a character is a vowel.
+
+l = lambda x : x in "AEIOUaeiou"
+print("vowel =" ,l("a"))
+
+#18. Use lambda + filter to extract words of length > 5 from a list.
+
+a = ['qwerrrrrrrty', 'qweregsdc','qwer','a']
+l = list(filter(lambda x : len(x) > 5  , a))
+print(l)
+
+# 19. Use lambda to calculate the area of a circle (πr²).
+
+area  = lambda r : 3.14*r*r
+print(area(3))
+
+#20. Write a lambda to remove duplicates from a list using filter + set
+b = ['a','a','b','b','c','c']
+a  = list(filter(lambda x : x , set(b)))
+print(a)
+
+
+# 21. Use lambda with reduce() to find the product of all numbers in a list.
+
+fact = reduce(lambda a,b:a*b , [i for i in range(1,5)])
+print(fact)
+
+# 22. Write a lambda that returns absolute value of a number.
