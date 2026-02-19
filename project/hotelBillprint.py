@@ -1,6 +1,5 @@
 import pyodbc
 
-
 class DataConnect:
     def connect(self):
         return  pyodbc.connect(
@@ -72,6 +71,8 @@ class Bill(DataConnect):
                 grand_total += r.total
                 sr += 1
 
+            print("Grand Total = ",  grand_total,b"rs")
+
             cur.execute("""
                 SELECT grandTotal, time
                 FROM Customer
@@ -124,7 +125,7 @@ class Bill(DataConnect):
                     sr += 1
 
                 f.write("-" * 60 + "\n")
-                f.write(f"Grand Total : {grand_total}\n")
+                f.write(f"Grand Total : {grand_total} rs\n")
 
                 cur.execute("""
                     SELECT grandTotal, time
@@ -134,7 +135,8 @@ class Bill(DataConnect):
 
                 info = cur.fetchone()
                 if info:
-                    f.write(f"Grand Total : {info.grandTotal}\n")
+
+                    # f.write(f"Grand Total : {info.grandTotal}\n")
                     f.write(f"Time        : {info.time}\n")
 
             print("Bill downloaded successfully as :", file_name)
