@@ -1,7 +1,9 @@
 import pyodbc
 
 class DataConnect:
+    """ HAndle Data base connection"""
     def connect(self):
+
         return  pyodbc.connect(
     "DRIVER={SQL Server};"
     "SERVER=PRADIP\\SQLEXPRESS;"
@@ -13,6 +15,8 @@ print("Connected successfully")
 
 class menu(DataConnect):
     def show_menu(self):
+
+        """This function fetch the itemName and price from sql menu table to show the available item to customer"""
         con = self.connect() 
         cur = con.cursor()
         cur.execute("select item_name,price from menu")
@@ -21,12 +25,12 @@ class menu(DataConnect):
         for i in rows:
             print(i.item_name ,"-" ,i.price,"rs")
 
-
 # menu1 = menu()
 # menu1.show_menu()
 
 
 class Bill(DataConnect):
+        """ handle all bill generation and print the bill """
         
         def printBill(self,cust_id):
             self.cust_id = cust_id
@@ -71,7 +75,7 @@ class Bill(DataConnect):
                 grand_total += r.total
                 sr += 1
 
-            print("Grand Total = ",  grand_total,b"rs")
+            print("Grand Total = ",  grand_total,"rs")
 
             cur.execute("""
                 SELECT grandTotal, time
@@ -80,6 +84,7 @@ class Bill(DataConnect):
             """, (cust_id,))
 
         def Save_Bill(self, cust_id):
+            """save the generated bill in txt file according to customer id"""
 
             con = self.connect()
             cur = con.cursor()
@@ -103,7 +108,7 @@ class Bill(DataConnect):
             file_name = rf"C:\Users\pradi\Downloads\NILESH\project\bill_{cust_id}.txt"
 
 
-            with open(file_name, "w", encoding="utf-8") as f:
+            with open(file_name, "w") as f:
 
                 f.write("-" * 60 + "\n")
                 f.write("Welcome Hotel Nilesh".center(60) + "\n")

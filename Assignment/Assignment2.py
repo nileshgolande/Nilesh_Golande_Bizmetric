@@ -285,3 +285,53 @@ fact = reduce(lambda a,b:a*b , [i for i in range(1,5)])
 print(fact)
 
 # 22. Write a lambda that returns absolute value of a number.
+
+a = lambda x: x if x>0 else x*(-1)
+print(a(2))
+
+# 23. Use lambda to sort a list of strings by their length
+b = ['a','dd','sdsaa','fgwadfea','a','a']
+a = lambda x : sorted(x , key=len)
+print(a(b))
+
+
+# 24. Use lambda to get only uppercase characters from a string.
+a = "qsdfvsdKMOWMOAOMOAM"
+b = ''.join(filter(lambda x: 'A' <= x <= 'Z', a))
+print(b)
+
+# 25. Write a lambda that returns the square if number is even, cube if odd.
+a = lambda x: x**2 if x%2==0 else x**3
+print(a(3))
+print(a(4))
+
+# 26. Use lambda with map to convert Celsius to Fahrenheit.
+
+cel = [0, 20, 30, 37, 100]
+fah = list(map(lambda c: (c * 9/5) + 32, cel))
+print(fah)
+
+# 27. Write a lambda to check if two strings are anagrams.
+
+a = lambda x,y : sorted(x)==sorted(y)
+print(a("silent","listen"))
+
+
+# 28. Use lambda to extract only numeric values from a mixed list.
+a = ["a","b",1,2,3,4,5]
+
+b = list(filter(lambda x:type(x) == int, a))
+print(b)
+
+
+# 29. Use lambda inside any() to check if any list element is negative.
+a = [-1,-2,-3,4,5,6]
+b = any(lambda x : x < 0 , a )
+
+print(b)
+
+# 30. Use lambda to generate a function that multiplies any number by n
+
+m = lambda n: (lambda x: x * n)
+t= m(3)
+print(m(10))
