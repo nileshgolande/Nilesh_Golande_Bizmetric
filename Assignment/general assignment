@@ -1,0 +1,7 @@
+# Example: Rose = 1, Not Rose = 0
+
+flowers = ["rose", "tulip", "rose", "sunflower"]
+
+binary_encoded = [1 if f == "rose" else 0 for f in flowers]
+
+print(binary_encoded)
